@@ -311,6 +311,14 @@ int * FI(list_t lp){
     return array;
 }
 
+//This one should only be used in some contexts and not in all contexts. 
+//I havent implemented it yet because idk what to do if index1-index2=1 or -1
+//the general idea is to just swap check A-1 to B to A+1 and B-1 to A to B+1
+bool shouldswap(int* array ,list_t lp, int index1, int index2){
+    return false;
+
+}
+
 //will n times try to swap and see if it is better. 
 int * greedyswap(int * array, list_t lp){
     
@@ -387,6 +395,67 @@ int * greedyswapfortime(int * array, list_t lp, int seconds){
     return newarray;
 }
 
+//NOT DONE YET, IN PROGRESS! 
+int * greedyswapfortime2(int * array, list_t lp, int seconds){
+    
+    //I copy the array because I don't want it to be altering the original array. 
+    int * newarray= malloc(sizeof(int)*lp.len);
+
+    for(int i=0;i<lp.len;i++){
+        newarray[i]=array[i];
+    }
+    int ind1;
+    int ind2;
+    int val1;
+    int val2;
+
+    int bestind1;
+    int bestind2;
+    int bestval1;
+    int bestval2;
+
+    float minobj;
+
+
+
+    float curr_dist=distance(newarray,lp.len,lp);
+    int start_time=time(NULL);
+    while(time(NULL)-start_time<seconds){
+
+        bestind1=0;
+        bestind2=0;
+        bestval1=0;
+        bestval2=0;
+
+        minobj=FLT_MAX;
+        for(int i=0;i<20;i++){
+
+            ind1=rand()%lp.len;
+            ind2=rand()%lp.len;
+            val1=newarray[ind1];
+            val2=newarray[ind2];
+            newarray[ind1]=val2;
+            newarray[ind2]=val1;
+            float newdist=distance(newarray,lp.len,lp);
+            if(newdist<minobj){
+                minobj=newdist;
+                bestind1=ind1;
+                bestind2=ind2;
+            }
+            //this is to revert the change. 
+            newarray[ind1]=val1;
+            newarray[ind2]=val2;
+            }
+
+        bestval1=newarray[bestind1];
+        bestval2=newarray[bestind2];
+        
+        newarray[bestind1]=bestval2;
+        newarray[bestind2]=bestval1;
+            
+        }
+        return newarray;
+    }
 
 
 
@@ -507,8 +576,16 @@ int main(){
     //eval(FI,lp,random_dist,"FI");
     
     printf("TRYING THE GREEDY SEARCH ALGORITHM\n");
-    for(int i=1;i<10;i++){
+    for(int i=1;i<5;i++){
         int * greedyfortime=greedyswapfortime(array,lp,i);
+        printf("%d:\n",i);
+        eval_new_array(greedyfortime, lp,random_dist, "greedy swapper");
+
+    }
+
+    printf("TRYING THE SECOND GREEDY SEARCH ALGORITHM\n");
+    for(int i=1;i<5;i++){
+        int * greedyfortime=greedyswapfortime2(array,lp,i);
         printf("%d:\n",i);
         eval_new_array(greedyfortime, lp,random_dist, "greedy swapper");
 
