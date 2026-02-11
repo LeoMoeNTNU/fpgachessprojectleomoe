@@ -346,6 +346,48 @@ int * greedyswap(int * array, list_t lp){
     return newarray;
 }
 
+//will n times try to swap and see if it is better. 
+int * greedyswapfortime(int * array, list_t lp, int seconds){
+    
+    //I copy the array because I don't want it to be altering the original array. 
+    int * newarray= malloc(sizeof(int)*lp.len);
+
+    for(int i=0;i<lp.len;i++){
+        newarray[i]=array[i];
+    }
+    int ind1;
+    int ind2;
+    int val1;
+    int val2;
+
+
+
+    float curr_dist=distance(newarray,lp.len,lp);
+    int start_time=time(NULL);
+    while(time(NULL)-start_time<seconds){
+
+        for(int i=0;i<100;i++){
+            ind1=rand()%lp.len;
+            ind2=rand()%lp.len;
+            val1=newarray[ind1];
+            val2=newarray[ind2];
+            newarray[ind1]=val2;
+            newarray[ind2]=val1;
+            float newdist=distance(newarray,lp.len,lp);
+            if(newdist<curr_dist){
+                curr_dist=newdist;
+            }else{
+                //this is to revert the change. 
+                newarray[ind1]=val1;
+                newarray[ind2]=val2;
+            }
+            
+        }
+    }
+    return newarray;
+}
+
+
 
 
 
@@ -407,6 +449,16 @@ void eval(int * (f)(list_t),list_t lp, float compare_value, char * name){
     
 }
 
+void eval_new_array(int* array, list_t lp,float compare_value, char * name){
+    if(!isvalidsolution2(array,lp.len)){
+        printstring(name);
+        printf("wasn't valid!\n");
+        return ;
+    }
+
+    printf("%s had an improvement of %f\n",name,compare_value/ distance(array,lp.len,lp));
+}
+
 
 int main(){
     //printstring("hi there!\n");
@@ -415,7 +467,7 @@ int main(){
 
 
 
-    list_t lp=get_list("tsp_toy20.tsp");
+    list_t lp=get_list("tsp_fun.tsp");
 
     //printf("full list from main of length %d\n",lp.len);
     /*
@@ -450,11 +502,19 @@ int main(){
     
 
     //eval(greedyswap,lp,random_dist,"improved");
-    eval(NN,lp,random_dist,"NN");
-    eval(NI,lp,random_dist,"NI");
-    eval(FI,lp,random_dist,"FI");
+    //eval(NN,lp,random_dist,"NN");
+    //eval(NI,lp,random_dist,"NI");
+    //eval(FI,lp,random_dist,"FI");
     
-    
+    printf("TRYING THE GREEDY SEARCH ALGORITHM\n");
+    for(int i=1;i<10;i++){
+        int * greedyfortime=greedyswapfortime(array,lp,i);
+        printf("%d:\n",i);
+        eval_new_array(greedyfortime, lp,random_dist, "greedy swapper");
+
+    }
+    //int * greedyswapfortime(int * array, list_t lp, int seconds)
+
     
 
     return 0;
