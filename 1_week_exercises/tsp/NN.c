@@ -429,23 +429,26 @@ int * greedyswapfortime2(int * array, list_t lp, int seconds){
 
         minobj=FLT_MAX;
         for(int i=0;i<20;i++){
+            for(int j=0;j<5;j++){
 
-            ind1=rand()%lp.len;
-            ind2=rand()%lp.len;
-            val1=newarray[ind1];
-            val2=newarray[ind2];
-            newarray[ind1]=val2;
-            newarray[ind2]=val1;
-            float newdist=distance(newarray,lp.len,lp);
-            if(newdist<minobj){
-                minobj=newdist;
-                bestind1=ind1;
-                bestind2=ind2;
+                
+                ind1=rand()%lp.len;
+                ind2=rand()%lp.len;
+                val1=newarray[ind1];
+                val2=newarray[ind2];
+                newarray[ind1]=val2;
+                newarray[ind2]=val1;
+                float newdist=distance(newarray,lp.len,lp);
+                if(newdist<minobj){
+                    minobj=newdist;
+                    bestind1=ind1;
+                    bestind2=ind2;
+                }
+                //this is to revert the change. 
+                newarray[ind1]=val1;
+                newarray[ind2]=val2;
             }
-            //this is to revert the change. 
-            newarray[ind1]=val1;
-            newarray[ind2]=val2;
-            }
+        }
 
         bestval1=newarray[bestind1];
         bestval2=newarray[bestind2];
