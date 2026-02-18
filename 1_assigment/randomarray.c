@@ -3,10 +3,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-void initalize_random(){
+int start_time;
+
+void initialize_random(){
     srand(time(NULL));
+    start_time=time(NULL);
 }
 
+int timewent(){
+    return time(NULL)-start_time;
+}
 
 void swap(int* array, int len){
 
@@ -19,17 +25,17 @@ void swap(int* array, int len){
 
 }
 
-int* randomarray(int len){
+void randomarray(int* array,int len){
   
     //printf("2\n");
-    int* array= malloc(len*sizeof(int));
+    //int* array= malloc(len*sizeof(int));
     for(int i=0;i <len;i++){
         array[i]=i;
     }
     for(int i=0;i<2*len;i++){
         swap(array,len);
     }
-    return array;
+    //return array;
 
 
     
@@ -54,4 +60,10 @@ int isvalidarray(int *p, int len){
 
     }
     return 1;
+}
+//the reason that I input the int pointer is that I then dont have to do malloc and can just send in an array-pointer (on stack)
+void randomindexes(int* ip,int amount, int maxVal){
+    for(int i=0;i<amount;i++){
+        ip[i]=rand()%maxVal;
+    }
 }
