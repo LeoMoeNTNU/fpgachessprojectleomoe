@@ -31,8 +31,14 @@ list_t getmatrix(const char * filename){
 
     int rowsandcols;
     int valid_items=fscanf(file, "%d", &rowsandcols);
-    printf("there are %d items!\n",rowsandcols);
+    //printf("there are %d items!\n",rowsandcols);
     int * retP=malloc(sizeof(int)*rowsandcols*rowsandcols);
+    enum status * statusP=malloc(sizeof(enum status)*rowsandcols*rowsandcols);
+    
+    for(int i=0;i<rowsandcols*rowsandcols;i++){
+        statusP[i]=MAYBE;
+    }
+    //printf("got here without segfault the first time!\n");
     int i=0;
 
     while(i<rowsandcols*rowsandcols){
@@ -53,7 +59,7 @@ list_t getmatrix(const char * filename){
 
         i++;
     }
-    return (list_t){rowsandcols,retP};
+    return (list_t){rowsandcols,retP,statusP};
 
 
     
