@@ -1,0 +1,3 @@
+Vtestnextkingposition2___024root__DepSet_hc4cbc9dc__0.o: \
+ Vtestnextkingposition2___024root__DepSet_hc4cbc9dc__0.cpp \
+ Vtestnextkingposition2__pch.h Vtestnextkingposition2___024root.h
