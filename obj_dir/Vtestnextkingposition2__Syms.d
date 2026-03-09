@@ -1,3 +1,0 @@
-Vtestnextkingposition2__Syms.o: Vtestnextkingposition2__Syms.cpp \
- Vtestnextkingposition2__pch.h Vtestnextkingposition2.h \
- Vtestnextkingposition2___024root.h Vtestnextkingposition2___024unit.h

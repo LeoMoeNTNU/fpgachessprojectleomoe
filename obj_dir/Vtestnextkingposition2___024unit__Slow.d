@@ -1,3 +1,0 @@
-Vtestnextkingposition2___024unit__Slow.o: \
- Vtestnextkingposition2___024unit__Slow.cpp Vtestnextkingposition2__pch.h \
- Vtestnextkingposition2__Syms.h Vtestnextkingposition2___024unit.h

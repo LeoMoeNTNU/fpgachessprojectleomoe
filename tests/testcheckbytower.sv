@@ -177,7 +177,29 @@ logic [1:0] out_status_row [7:0];
             $display("we are in fact not attacked so this is a bit weird!");
         end
 
+        $display("TEST checking that it only validates the one place:");
+
+        clearBoard();
+        kingPosition=fullcoord(3'd5,3'd2);
+        playing=WHITE;
+        board[fullcoord(3'd5,3'd2)].piece=KING;
+        board[fullcoord(3'd5,3'd2)].color=WHITE;
         
+         for (int r = 0; r < 8; r++) begin
+            for(int c=0;c<8;c++)begin
+                    kingPosition=fullcoord(3'(r),3'(c));
+
+                    #2
+                    if(3'(r)==3'd5&&3'(r)==3'd2&&~valid)begin
+                        $display("at %0d,%0d it is not valid, but should be!",r,c);
+                    end
+                    if((3'(r)!=3'd5||3'(c)!=3'd2)&&valid)begin
+                        $display("%0d,%0d is valid and shouldn't be",r,c,valid);
+                    end
+            
+            end
+
+        end
         
 
 

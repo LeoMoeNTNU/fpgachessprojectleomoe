@@ -9,3 +9,7 @@ Verifying if there is a check is a lot faster if I already know where the king i
 This also means that, when moving the king, this also needs to be moved. 
 There is an argument here that I should keep track of where all the pieces is constantly. 
 These are 16 pieces for each color, which is a lot less than checking 64 tiles to get a move. 
+
+
+# prints in tests should start with TEST
+This makes it easier to list at error messages to find an error. 
