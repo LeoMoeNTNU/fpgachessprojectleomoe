@@ -21,6 +21,7 @@ module testcheckbytower;
 
 fullpiece_t board[63:0];
 logic [5:0] kingPosition;
+color_t playing;
 
 logic attacked;
 logic valid;
@@ -30,11 +31,13 @@ logic out_lefttowerattack;
 logic[2:0] out_row;
 logic [2:0] out_col;
 logic [1:0] out_status_col [7:0];
+logic [1:0] out_status_row [7:0];
 
 
  checkbytower dut (
         .board(board),
         .kingPosition(kingPosition),
+        .playing(playing),
         .attacked(attacked),
         .valid(valid),
   
@@ -42,7 +45,8 @@ logic [1:0] out_status_col [7:0];
         .out_lefttowerattack(out_lefttowerattack),
         .out_row(out_row),
         .out_col(out_col),
-        .out_status_col(out_status_col)
+        .out_status_col(out_status_col),
+        .out_status_row(out_status_row)
     );
 
     task clearBoard();
@@ -64,6 +68,7 @@ logic [1:0] out_status_col [7:0];
 
         logic [2:0] towerrow;
         logic [2:0] towercol;
+        
         logic [5:0] attackingposposition;
         logic [1:0] status_looking_at;
         
@@ -72,7 +77,7 @@ logic [1:0] out_status_col [7:0];
         clearBoard();
         kingPosition=0;
 
-        #2
+        #1
 
         if(attacked)begin
             $display("for some reason we are attacked on an empty board");
@@ -90,14 +95,17 @@ logic [1:0] out_status_col [7:0];
         end
         */
 
+
+        $display("TEST: easy test on same col, different row");
         row = 3'd4;
         col= 3'd4;
 
         kingPosition=fullcoord(row,col);
+        playing=BLACK;
         board[fullcoord(row,col)].piece=KING;                
         board[fullcoord(row,col)].color=BLACK;
 
-        #2//This one doesnt do anything because it isn't clocked.
+        //#2//This one doesnt do anything because it isn't clocked.
         
         towerrow=3'd2;
         towercol=col;
@@ -105,7 +113,7 @@ logic [1:0] out_status_col [7:0];
         board[fullcoord(towerrow,towercol)].piece=ROOK;
         board[fullcoord(towerrow,towercol)].color=WHITE;
 
-        #100
+        #1
 
 
         /*
@@ -140,6 +148,37 @@ logic [1:0] out_status_col [7:0];
 
             end
         end
+
+
+        $display("TEST: same col different row but a piece in between!");
+        clearBoard();
+
+     
+        //king at
+        kingPosition=fullcoord(3'd1,3'd7);
+        playing=BLACK;
+        board[fullcoord(3'd1,3'd7)].piece=KING;                
+        board[fullcoord(3'd1,3'd7)].color=BLACK;
+
+        //#2//This one doesnt do anything because it isn't clocked.
+        
+        //Pawn at 2,7
+        board[fullcoord(3'd2,3'd7)].piece=PAWN;
+        board[fullcoord(3'd2,3'd7)].color=BLACK;
+
+        //Tower at 3,7
+        board[fullcoord(3'd3,3'd7)].piece=PAWN;
+        board[fullcoord(3'd3,3'd7)].color=BLACK;
+        #2
+        if(~valid)begin
+            $display("valid means that kingposition is correct, and it is!");
+        end
+        if(attacked)begin
+            $display("we are in fact not attacked so this is a bit weird!");
+        end
+
+        
+        
 
 
 

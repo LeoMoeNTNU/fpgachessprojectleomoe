@@ -16,17 +16,29 @@ class alignas(VL_CACHE_LINE_BYTES) Vtestcheckbytower___024root final : public Ve
 
     // DESIGN SPECIFIC STATE
     CData/*5:0*/ testcheckbytower__DOT__kingPosition;
+    CData/*0:0*/ testcheckbytower__DOT__playing;
     CData/*0:0*/ testcheckbytower__DOT__attacked;
+    CData/*0:0*/ testcheckbytower__DOT__valid;
+    CData/*0:0*/ testcheckbytower__DOT__out_righttowerattack;
     CData/*0:0*/ testcheckbytower__DOT__out_lefttowerattack;
     CData/*1:0*/ testcheckbytower__DOT__unnamedblk2__DOT__status_looking_at;
-    CData/*5:0*/ __Vfunc_fullcoord__8__Vfuncout;
-    CData/*2:0*/ __Vfunc_fullcoord__8__col;
+    CData/*5:0*/ __Vfunc_fullcoord__16__Vfuncout;
+    CData/*2:0*/ __Vfunc_fullcoord__16__row;
+    CData/*2:0*/ __Vfunc_fullcoord__16__col;
+    CData/*5:0*/ __Vfunc_fullcoord__17__Vfuncout;
+    CData/*2:0*/ __Vfunc_fullcoord__17__row;
+    CData/*2:0*/ __Vfunc_fullcoord__17__col;
+    CData/*5:0*/ __Vfunc_fullcoord__18__Vfuncout;
+    CData/*2:0*/ __Vfunc_fullcoord__18__col;
+    CData/*5:0*/ __Vfunc_fullcoord__19__Vfuncout;
+    CData/*2:0*/ __Vfunc_fullcoord__19__row;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __VactContinue;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<CData/*3:0*/, 64> testcheckbytower__DOT__board;
     VlUnpacked<CData/*1:0*/, 8> testcheckbytower__DOT__out_status_col;
     VlUnpacked<CData/*3:0*/, 8> testcheckbytower__DOT__dut__DOT__wholecol;
+    VlUnpacked<CData/*3:0*/, 8> testcheckbytower__DOT__dut__DOT__wholerow;
     VlUnpacked<CData/*1:0*/, 8> testcheckbytower__DOT__dut__DOT__status_col;
     VlDelayScheduler __VdlySched;
     VlTriggerVec<1> __VstlTriggered;

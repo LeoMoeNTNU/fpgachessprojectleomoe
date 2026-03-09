@@ -132,7 +132,10 @@ VL_ATTR_COLD void Vtestcheckbytower___024root___ctor_var_reset(Vtestcheckbytower
         vlSelf->testcheckbytower__DOT__board[__Vi0] = VL_RAND_RESET_I(4);
     }
     vlSelf->testcheckbytower__DOT__kingPosition = VL_RAND_RESET_I(6);
+    vlSelf->testcheckbytower__DOT__playing = VL_RAND_RESET_I(1);
     vlSelf->testcheckbytower__DOT__attacked = VL_RAND_RESET_I(1);
+    vlSelf->testcheckbytower__DOT__valid = VL_RAND_RESET_I(1);
+    vlSelf->testcheckbytower__DOT__out_righttowerattack = VL_RAND_RESET_I(1);
     vlSelf->testcheckbytower__DOT__out_lefttowerattack = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
         vlSelf->testcheckbytower__DOT__out_status_col[__Vi0] = VL_RAND_RESET_I(2);
@@ -142,8 +145,19 @@ VL_ATTR_COLD void Vtestcheckbytower___024root___ctor_var_reset(Vtestcheckbytower
         vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[__Vi0] = VL_RAND_RESET_I(4);
     }
     for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
+        vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[__Vi0] = VL_RAND_RESET_I(4);
+    }
+    for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
         vlSelf->testcheckbytower__DOT__dut__DOT__status_col[__Vi0] = VL_RAND_RESET_I(2);
     }
-    vlSelf->__Vfunc_fullcoord__8__Vfuncout = VL_RAND_RESET_I(6);
-    vlSelf->__Vfunc_fullcoord__8__col = VL_RAND_RESET_I(3);
+    vlSelf->__Vfunc_fullcoord__16__Vfuncout = VL_RAND_RESET_I(6);
+    vlSelf->__Vfunc_fullcoord__16__row = VL_RAND_RESET_I(3);
+    vlSelf->__Vfunc_fullcoord__16__col = VL_RAND_RESET_I(3);
+    vlSelf->__Vfunc_fullcoord__17__Vfuncout = VL_RAND_RESET_I(6);
+    vlSelf->__Vfunc_fullcoord__17__row = VL_RAND_RESET_I(3);
+    vlSelf->__Vfunc_fullcoord__17__col = VL_RAND_RESET_I(3);
+    vlSelf->__Vfunc_fullcoord__18__Vfuncout = VL_RAND_RESET_I(6);
+    vlSelf->__Vfunc_fullcoord__18__col = VL_RAND_RESET_I(3);
+    vlSelf->__Vfunc_fullcoord__19__Vfuncout = VL_RAND_RESET_I(6);
+    vlSelf->__Vfunc_fullcoord__19__row = VL_RAND_RESET_I(3);
     }

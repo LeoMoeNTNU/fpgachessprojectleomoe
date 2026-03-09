@@ -58,6 +58,48 @@ VL_INLINE_OPT VlCoroutine Vtestcheckbytower___024root___eval_initial__TOP__Vtimi
     __Vfunc_fullcoord__5__row = 0;
     CData/*2:0*/ __Vfunc_fullcoord__5__col;
     __Vfunc_fullcoord__5__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__7__Vfuncout;
+    __Vfunc_fullcoord__7__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__7__row;
+    __Vfunc_fullcoord__7__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__7__col;
+    __Vfunc_fullcoord__7__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__8__Vfuncout;
+    __Vfunc_fullcoord__8__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__8__row;
+    __Vfunc_fullcoord__8__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__8__col;
+    __Vfunc_fullcoord__8__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__9__Vfuncout;
+    __Vfunc_fullcoord__9__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__9__row;
+    __Vfunc_fullcoord__9__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__9__col;
+    __Vfunc_fullcoord__9__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__10__Vfuncout;
+    __Vfunc_fullcoord__10__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__10__row;
+    __Vfunc_fullcoord__10__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__10__col;
+    __Vfunc_fullcoord__10__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__11__Vfuncout;
+    __Vfunc_fullcoord__11__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__11__row;
+    __Vfunc_fullcoord__11__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__11__col;
+    __Vfunc_fullcoord__11__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__12__Vfuncout;
+    __Vfunc_fullcoord__12__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__12__row;
+    __Vfunc_fullcoord__12__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__12__col;
+    __Vfunc_fullcoord__12__col = 0;
+    CData/*5:0*/ __Vfunc_fullcoord__13__Vfuncout;
+    __Vfunc_fullcoord__13__Vfuncout = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__13__row;
+    __Vfunc_fullcoord__13__row = 0;
+    CData/*2:0*/ __Vfunc_fullcoord__13__col;
+    __Vfunc_fullcoord__13__col = 0;
     // Body
     VL_WRITEF("first easy test with empty board\n");
     vlSelf->testcheckbytower__DOT__board[0U] = (8U 
@@ -445,16 +487,21 @@ VL_INLINE_OPT VlCoroutine Vtestcheckbytower___024root___eval_initial__TOP__Vtimi
                                                    | vlSelf->testcheckbytower__DOT__board
                                                    [0x3fU]);
     vlSelf->testcheckbytower__DOT__kingPosition = 0U;
-    co_await vlSelf->__VdlySched.delay(2ULL, nullptr, 
+    co_await vlSelf->__VdlySched.delay(1ULL, nullptr, 
                                        "tests/testcheckbytower.sv", 
-                                       75);
+                                       80);
     if (VL_UNLIKELY(vlSelf->testcheckbytower__DOT__attacked)) {
         VL_WRITEF("for some reason we are attacked on an empty board\n");
         if (VL_UNLIKELY(vlSelf->testcheckbytower__DOT__out_lefttowerattack)) {
             VL_WRITEF(" the attack comes from the left tower: %0#\n",
                       1,vlSelf->testcheckbytower__DOT__out_lefttowerattack);
         }
+        if (VL_UNLIKELY(vlSelf->testcheckbytower__DOT__out_righttowerattack)) {
+            VL_WRITEF("there is an attack from the right: %0#\n",
+                      1,vlSelf->testcheckbytower__DOT__out_righttowerattack);
+        }
     }
+    VL_WRITEF("TEST: easy test on same col, different row\n");
     testcheckbytower__DOT__unnamedblk2__DOT__row = 4U;
     testcheckbytower__DOT__unnamedblk2__DOT__col = 4U;
     __Vfunc_fullcoord__1__col = testcheckbytower__DOT__unnamedblk2__DOT__col;
@@ -462,6 +509,7 @@ VL_INLINE_OPT VlCoroutine Vtestcheckbytower___024root___eval_initial__TOP__Vtimi
     __Vfunc_fullcoord__1__Vfuncout = (((IData)(__Vfunc_fullcoord__1__row) 
                                        << 3U) | (IData)(__Vfunc_fullcoord__1__col));
     vlSelf->testcheckbytower__DOT__kingPosition = __Vfunc_fullcoord__1__Vfuncout;
+    vlSelf->testcheckbytower__DOT__playing = 0U;
     VL_ASSIGNSEL_II(4,3,0U, vlSelf->testcheckbytower__DOT__board
                     [([&]() {
                 __Vfunc_fullcoord__2__col = testcheckbytower__DOT__unnamedblk2__DOT__col;
@@ -478,9 +526,6 @@ VL_INLINE_OPT VlCoroutine Vtestcheckbytower___024root___eval_initial__TOP__Vtimi
                                                    << 3U) 
                                                   | (IData)(__Vfunc_fullcoord__3__col));
             }(), (IData)(__Vfunc_fullcoord__3__Vfuncout))], 0U);
-    co_await vlSelf->__VdlySched.delay(2ULL, nullptr, 
-                                       "tests/testcheckbytower.sv", 
-                                       100);
     testcheckbytower__DOT__unnamedblk2__DOT__towerrow = 2U;
     testcheckbytower__DOT__unnamedblk2__DOT__towercol 
         = testcheckbytower__DOT__unnamedblk2__DOT__col;
@@ -500,13 +545,16 @@ VL_INLINE_OPT VlCoroutine Vtestcheckbytower___024root___eval_initial__TOP__Vtimi
                                                    << 3U) 
                                                   | (IData)(__Vfunc_fullcoord__5__col));
             }(), (IData)(__Vfunc_fullcoord__5__Vfuncout))]);
-    co_await vlSelf->__VdlySched.delay(0x64ULL, nullptr, 
+    co_await vlSelf->__VdlySched.delay(1ULL, nullptr, 
                                        "tests/testcheckbytower.sv", 
-                                       108);
+                                       116);
     if (VL_UNLIKELY((1U & (~ (IData)(vlSelf->testcheckbytower__DOT__attacked))))) {
         VL_WRITEF("why are we not attacked???\n");
         if (VL_UNLIKELY((1U & (~ (IData)(vlSelf->testcheckbytower__DOT__out_lefttowerattack))))) {
             VL_WRITEF("we are not attacked on the left, which we should be!\n");
+        }
+        if (VL_UNLIKELY(vlSelf->testcheckbytower__DOT__out_righttowerattack)) {
+            VL_WRITEF("we are attacked on the right, which we shouldnt be!\n");
         }
         vlSelf->testcheckbytower__DOT__unnamedblk2__DOT__status_looking_at 
             = vlSelf->testcheckbytower__DOT__out_status_col
@@ -605,7 +653,459 @@ VL_INLINE_OPT VlCoroutine Vtestcheckbytower___024root___eval_initial__TOP__Vtimi
             VL_WRITEF("status 7: NOTENEMYROOK\n");
         }
     }
-    VL_FINISH_MT("tests/testcheckbytower.sv", 146, "");
+    VL_WRITEF("TEST: same col different row but a piece in between!\n");
+    vlSelf->testcheckbytower__DOT__board[0U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [0U]);
+    vlSelf->testcheckbytower__DOT__board[0U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [0U]);
+    vlSelf->testcheckbytower__DOT__board[1U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [1U]);
+    vlSelf->testcheckbytower__DOT__board[1U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [1U]);
+    vlSelf->testcheckbytower__DOT__board[2U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [2U]);
+    vlSelf->testcheckbytower__DOT__board[2U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [2U]);
+    vlSelf->testcheckbytower__DOT__board[3U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [3U]);
+    vlSelf->testcheckbytower__DOT__board[3U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [3U]);
+    vlSelf->testcheckbytower__DOT__board[4U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [4U]);
+    vlSelf->testcheckbytower__DOT__board[4U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [4U]);
+    vlSelf->testcheckbytower__DOT__board[5U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [5U]);
+    vlSelf->testcheckbytower__DOT__board[5U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [5U]);
+    vlSelf->testcheckbytower__DOT__board[6U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [6U]);
+    vlSelf->testcheckbytower__DOT__board[6U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [6U]);
+    vlSelf->testcheckbytower__DOT__board[7U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [7U]);
+    vlSelf->testcheckbytower__DOT__board[7U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [7U]);
+    vlSelf->testcheckbytower__DOT__board[8U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [8U]);
+    vlSelf->testcheckbytower__DOT__board[8U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [8U]);
+    vlSelf->testcheckbytower__DOT__board[9U] = (8U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [9U]);
+    vlSelf->testcheckbytower__DOT__board[9U] = (8U 
+                                                | vlSelf->testcheckbytower__DOT__board
+                                                [9U]);
+    vlSelf->testcheckbytower__DOT__board[0xaU] = (8U 
+                                                  & vlSelf->testcheckbytower__DOT__board
+                                                  [0xaU]);
+    vlSelf->testcheckbytower__DOT__board[0xaU] = (8U 
+                                                  | vlSelf->testcheckbytower__DOT__board
+                                                  [0xaU]);
+    vlSelf->testcheckbytower__DOT__board[0xbU] = (8U 
+                                                  & vlSelf->testcheckbytower__DOT__board
+                                                  [0xbU]);
+    vlSelf->testcheckbytower__DOT__board[0xbU] = (8U 
+                                                  | vlSelf->testcheckbytower__DOT__board
+                                                  [0xbU]);
+    vlSelf->testcheckbytower__DOT__board[0xcU] = (8U 
+                                                  & vlSelf->testcheckbytower__DOT__board
+                                                  [0xcU]);
+    vlSelf->testcheckbytower__DOT__board[0xcU] = (8U 
+                                                  | vlSelf->testcheckbytower__DOT__board
+                                                  [0xcU]);
+    vlSelf->testcheckbytower__DOT__board[0xdU] = (8U 
+                                                  & vlSelf->testcheckbytower__DOT__board
+                                                  [0xdU]);
+    vlSelf->testcheckbytower__DOT__board[0xdU] = (8U 
+                                                  | vlSelf->testcheckbytower__DOT__board
+                                                  [0xdU]);
+    vlSelf->testcheckbytower__DOT__board[0xeU] = (8U 
+                                                  & vlSelf->testcheckbytower__DOT__board
+                                                  [0xeU]);
+    vlSelf->testcheckbytower__DOT__board[0xeU] = (8U 
+                                                  | vlSelf->testcheckbytower__DOT__board
+                                                  [0xeU]);
+    vlSelf->testcheckbytower__DOT__board[0xfU] = (8U 
+                                                  & vlSelf->testcheckbytower__DOT__board
+                                                  [0xfU]);
+    vlSelf->testcheckbytower__DOT__board[0xfU] = (8U 
+                                                  | vlSelf->testcheckbytower__DOT__board
+                                                  [0xfU]);
+    vlSelf->testcheckbytower__DOT__board[0x10U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x10U]);
+    vlSelf->testcheckbytower__DOT__board[0x10U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x10U]);
+    vlSelf->testcheckbytower__DOT__board[0x11U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x11U]);
+    vlSelf->testcheckbytower__DOT__board[0x11U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x11U]);
+    vlSelf->testcheckbytower__DOT__board[0x12U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x12U]);
+    vlSelf->testcheckbytower__DOT__board[0x12U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x12U]);
+    vlSelf->testcheckbytower__DOT__board[0x13U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x13U]);
+    vlSelf->testcheckbytower__DOT__board[0x13U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x13U]);
+    vlSelf->testcheckbytower__DOT__board[0x14U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x14U]);
+    vlSelf->testcheckbytower__DOT__board[0x14U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x14U]);
+    vlSelf->testcheckbytower__DOT__board[0x15U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x15U]);
+    vlSelf->testcheckbytower__DOT__board[0x15U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x15U]);
+    vlSelf->testcheckbytower__DOT__board[0x16U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x16U]);
+    vlSelf->testcheckbytower__DOT__board[0x16U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x16U]);
+    vlSelf->testcheckbytower__DOT__board[0x17U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x17U]);
+    vlSelf->testcheckbytower__DOT__board[0x17U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x17U]);
+    vlSelf->testcheckbytower__DOT__board[0x18U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x18U]);
+    vlSelf->testcheckbytower__DOT__board[0x18U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x18U]);
+    vlSelf->testcheckbytower__DOT__board[0x19U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x19U]);
+    vlSelf->testcheckbytower__DOT__board[0x19U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x19U]);
+    vlSelf->testcheckbytower__DOT__board[0x1aU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x1aU]);
+    vlSelf->testcheckbytower__DOT__board[0x1aU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x1aU]);
+    vlSelf->testcheckbytower__DOT__board[0x1bU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x1bU]);
+    vlSelf->testcheckbytower__DOT__board[0x1bU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x1bU]);
+    vlSelf->testcheckbytower__DOT__board[0x1cU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x1cU]);
+    vlSelf->testcheckbytower__DOT__board[0x1cU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x1cU]);
+    vlSelf->testcheckbytower__DOT__board[0x1dU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x1dU]);
+    vlSelf->testcheckbytower__DOT__board[0x1dU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x1dU]);
+    vlSelf->testcheckbytower__DOT__board[0x1eU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x1eU]);
+    vlSelf->testcheckbytower__DOT__board[0x1eU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x1eU]);
+    vlSelf->testcheckbytower__DOT__board[0x1fU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x1fU]);
+    vlSelf->testcheckbytower__DOT__board[0x1fU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x1fU]);
+    vlSelf->testcheckbytower__DOT__board[0x20U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x20U]);
+    vlSelf->testcheckbytower__DOT__board[0x20U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x20U]);
+    vlSelf->testcheckbytower__DOT__board[0x21U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x21U]);
+    vlSelf->testcheckbytower__DOT__board[0x21U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x21U]);
+    vlSelf->testcheckbytower__DOT__board[0x22U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x22U]);
+    vlSelf->testcheckbytower__DOT__board[0x22U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x22U]);
+    vlSelf->testcheckbytower__DOT__board[0x23U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x23U]);
+    vlSelf->testcheckbytower__DOT__board[0x23U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x23U]);
+    vlSelf->testcheckbytower__DOT__board[0x24U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x24U]);
+    vlSelf->testcheckbytower__DOT__board[0x24U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x24U]);
+    vlSelf->testcheckbytower__DOT__board[0x25U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x25U]);
+    vlSelf->testcheckbytower__DOT__board[0x25U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x25U]);
+    vlSelf->testcheckbytower__DOT__board[0x26U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x26U]);
+    vlSelf->testcheckbytower__DOT__board[0x26U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x26U]);
+    vlSelf->testcheckbytower__DOT__board[0x27U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x27U]);
+    vlSelf->testcheckbytower__DOT__board[0x27U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x27U]);
+    vlSelf->testcheckbytower__DOT__board[0x28U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x28U]);
+    vlSelf->testcheckbytower__DOT__board[0x28U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x28U]);
+    vlSelf->testcheckbytower__DOT__board[0x29U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x29U]);
+    vlSelf->testcheckbytower__DOT__board[0x29U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x29U]);
+    vlSelf->testcheckbytower__DOT__board[0x2aU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x2aU]);
+    vlSelf->testcheckbytower__DOT__board[0x2aU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x2aU]);
+    vlSelf->testcheckbytower__DOT__board[0x2bU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x2bU]);
+    vlSelf->testcheckbytower__DOT__board[0x2bU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x2bU]);
+    vlSelf->testcheckbytower__DOT__board[0x2cU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x2cU]);
+    vlSelf->testcheckbytower__DOT__board[0x2cU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x2cU]);
+    vlSelf->testcheckbytower__DOT__board[0x2dU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x2dU]);
+    vlSelf->testcheckbytower__DOT__board[0x2dU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x2dU]);
+    vlSelf->testcheckbytower__DOT__board[0x2eU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x2eU]);
+    vlSelf->testcheckbytower__DOT__board[0x2eU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x2eU]);
+    vlSelf->testcheckbytower__DOT__board[0x2fU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x2fU]);
+    vlSelf->testcheckbytower__DOT__board[0x2fU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x2fU]);
+    vlSelf->testcheckbytower__DOT__board[0x30U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x30U]);
+    vlSelf->testcheckbytower__DOT__board[0x30U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x30U]);
+    vlSelf->testcheckbytower__DOT__board[0x31U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x31U]);
+    vlSelf->testcheckbytower__DOT__board[0x31U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x31U]);
+    vlSelf->testcheckbytower__DOT__board[0x32U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x32U]);
+    vlSelf->testcheckbytower__DOT__board[0x32U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x32U]);
+    vlSelf->testcheckbytower__DOT__board[0x33U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x33U]);
+    vlSelf->testcheckbytower__DOT__board[0x33U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x33U]);
+    vlSelf->testcheckbytower__DOT__board[0x34U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x34U]);
+    vlSelf->testcheckbytower__DOT__board[0x34U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x34U]);
+    vlSelf->testcheckbytower__DOT__board[0x35U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x35U]);
+    vlSelf->testcheckbytower__DOT__board[0x35U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x35U]);
+    vlSelf->testcheckbytower__DOT__board[0x36U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x36U]);
+    vlSelf->testcheckbytower__DOT__board[0x36U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x36U]);
+    vlSelf->testcheckbytower__DOT__board[0x37U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x37U]);
+    vlSelf->testcheckbytower__DOT__board[0x37U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x37U]);
+    vlSelf->testcheckbytower__DOT__board[0x38U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x38U]);
+    vlSelf->testcheckbytower__DOT__board[0x38U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x38U]);
+    vlSelf->testcheckbytower__DOT__board[0x39U] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x39U]);
+    vlSelf->testcheckbytower__DOT__board[0x39U] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x39U]);
+    vlSelf->testcheckbytower__DOT__board[0x3aU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x3aU]);
+    vlSelf->testcheckbytower__DOT__board[0x3aU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x3aU]);
+    vlSelf->testcheckbytower__DOT__board[0x3bU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x3bU]);
+    vlSelf->testcheckbytower__DOT__board[0x3bU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x3bU]);
+    vlSelf->testcheckbytower__DOT__board[0x3cU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x3cU]);
+    vlSelf->testcheckbytower__DOT__board[0x3cU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x3cU]);
+    vlSelf->testcheckbytower__DOT__board[0x3dU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x3dU]);
+    vlSelf->testcheckbytower__DOT__board[0x3dU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x3dU]);
+    vlSelf->testcheckbytower__DOT__board[0x3eU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x3eU]);
+    vlSelf->testcheckbytower__DOT__board[0x3eU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x3eU]);
+    vlSelf->testcheckbytower__DOT__board[0x3fU] = (8U 
+                                                   & vlSelf->testcheckbytower__DOT__board
+                                                   [0x3fU]);
+    vlSelf->testcheckbytower__DOT__board[0x3fU] = (8U 
+                                                   | vlSelf->testcheckbytower__DOT__board
+                                                   [0x3fU]);
+    __Vfunc_fullcoord__7__col = 7U;
+    __Vfunc_fullcoord__7__row = 1U;
+    __Vfunc_fullcoord__7__Vfuncout = (((IData)(__Vfunc_fullcoord__7__row) 
+                                       << 3U) | (IData)(__Vfunc_fullcoord__7__col));
+    vlSelf->testcheckbytower__DOT__kingPosition = __Vfunc_fullcoord__7__Vfuncout;
+    vlSelf->testcheckbytower__DOT__playing = 0U;
+    VL_ASSIGNSEL_II(4,3,0U, vlSelf->testcheckbytower__DOT__board
+                    [([&]() {
+                __Vfunc_fullcoord__8__col = 7U;
+                __Vfunc_fullcoord__8__row = 1U;
+                __Vfunc_fullcoord__8__Vfuncout = (((IData)(__Vfunc_fullcoord__8__row) 
+                                                   << 3U) 
+                                                  | (IData)(__Vfunc_fullcoord__8__col));
+            }(), (IData)(__Vfunc_fullcoord__8__Vfuncout))], 6U);
+    VL_ASSIGNBIT_II(3U, vlSelf->testcheckbytower__DOT__board
+                    [([&]() {
+                __Vfunc_fullcoord__9__col = 7U;
+                __Vfunc_fullcoord__9__row = 1U;
+                __Vfunc_fullcoord__9__Vfuncout = (((IData)(__Vfunc_fullcoord__9__row) 
+                                                   << 3U) 
+                                                  | (IData)(__Vfunc_fullcoord__9__col));
+            }(), (IData)(__Vfunc_fullcoord__9__Vfuncout))], 0U);
+    VL_ASSIGNSEL_II(4,3,0U, vlSelf->testcheckbytower__DOT__board
+                    [([&]() {
+                __Vfunc_fullcoord__10__col = 7U;
+                __Vfunc_fullcoord__10__row = 2U;
+                __Vfunc_fullcoord__10__Vfuncout = (
+                                                   ((IData)(__Vfunc_fullcoord__10__row) 
+                                                    << 3U) 
+                                                   | (IData)(__Vfunc_fullcoord__10__col));
+            }(), (IData)(__Vfunc_fullcoord__10__Vfuncout))], 1U);
+    VL_ASSIGNBIT_II(3U, vlSelf->testcheckbytower__DOT__board
+                    [([&]() {
+                __Vfunc_fullcoord__11__col = 7U;
+                __Vfunc_fullcoord__11__row = 2U;
+                __Vfunc_fullcoord__11__Vfuncout = (
+                                                   ((IData)(__Vfunc_fullcoord__11__row) 
+                                                    << 3U) 
+                                                   | (IData)(__Vfunc_fullcoord__11__col));
+            }(), (IData)(__Vfunc_fullcoord__11__Vfuncout))], 0U);
+    VL_ASSIGNSEL_II(4,3,0U, vlSelf->testcheckbytower__DOT__board
+                    [([&]() {
+                __Vfunc_fullcoord__12__col = 7U;
+                __Vfunc_fullcoord__12__row = 3U;
+                __Vfunc_fullcoord__12__Vfuncout = (
+                                                   ((IData)(__Vfunc_fullcoord__12__row) 
+                                                    << 3U) 
+                                                   | (IData)(__Vfunc_fullcoord__12__col));
+            }(), (IData)(__Vfunc_fullcoord__12__Vfuncout))], 1U);
+    VL_ASSIGNBIT_II(3U, vlSelf->testcheckbytower__DOT__board
+                    [([&]() {
+                __Vfunc_fullcoord__13__col = 7U;
+                __Vfunc_fullcoord__13__row = 3U;
+                __Vfunc_fullcoord__13__Vfuncout = (
+                                                   ((IData)(__Vfunc_fullcoord__13__row) 
+                                                    << 3U) 
+                                                   | (IData)(__Vfunc_fullcoord__13__col));
+            }(), (IData)(__Vfunc_fullcoord__13__Vfuncout))], 0U);
+    co_await vlSelf->__VdlySched.delay(2ULL, nullptr, 
+                                       "tests/testcheckbytower.sv", 
+                                       172);
+    if (VL_UNLIKELY((1U & (~ (IData)(vlSelf->testcheckbytower__DOT__valid))))) {
+        VL_WRITEF("valid means that kingposition is correct, and it is!\n");
+    }
+    if (VL_UNLIKELY(vlSelf->testcheckbytower__DOT__attacked)) {
+        VL_WRITEF("we are in fact not attacked so this is a bit weird!\n");
+    }
+    VL_FINISH_MT("tests/testcheckbytower.sv", 183, "");
 }
 
 VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckbytower___024root* vlSelf) {
@@ -619,81 +1119,162 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
     testcheckbytower__DOT__dut__DOT__col = 0;
     CData/*0:0*/ testcheckbytower__DOT__dut__DOT__lefttowerattack;
     testcheckbytower__DOT__dut__DOT__lefttowerattack = 0;
-    CData/*0:0*/ testcheckbytower__DOT__dut__DOT__playing;
-    testcheckbytower__DOT__dut__DOT__playing = 0;
-    CData/*2:0*/ __Vfunc_row__6__Vfuncout;
-    __Vfunc_row__6__Vfuncout = 0;
-    CData/*5:0*/ __Vfunc_row__6__index;
-    __Vfunc_row__6__index = 0;
-    CData/*2:0*/ __Vfunc_col__7__Vfuncout;
-    __Vfunc_col__7__Vfuncout = 0;
-    CData/*5:0*/ __Vfunc_col__7__index;
-    __Vfunc_col__7__index = 0;
+    CData/*0:0*/ testcheckbytower__DOT__dut__DOT__righttowerattack;
+    testcheckbytower__DOT__dut__DOT__righttowerattack = 0;
+    VlUnpacked<CData/*1:0*/, 8> testcheckbytower__DOT__dut__DOT__status_row;
+    for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
+        testcheckbytower__DOT__dut__DOT__status_row[__Vi0] = 0;
+    }
+    CData/*2:0*/ __Vfunc_row__14__Vfuncout;
+    __Vfunc_row__14__Vfuncout = 0;
+    CData/*5:0*/ __Vfunc_row__14__index;
+    __Vfunc_row__14__index = 0;
+    CData/*2:0*/ __Vfunc_col__15__Vfuncout;
+    __Vfunc_col__15__Vfuncout = 0;
+    CData/*5:0*/ __Vfunc_col__15__index;
+    __Vfunc_col__15__index = 0;
     // Body
-    testcheckbytower__DOT__dut__DOT__playing = (1U 
-                                                & (vlSelf->testcheckbytower__DOT__board
-                                                   [vlSelf->testcheckbytower__DOT__kingPosition] 
-                                                   >> 3U));
-    __Vfunc_row__6__index = vlSelf->testcheckbytower__DOT__kingPosition;
-    __Vfunc_row__6__Vfuncout = (7U & ((IData)(__Vfunc_row__6__index) 
-                                      >> 3U));
-    testcheckbytower__DOT__dut__DOT__row = __Vfunc_row__6__Vfuncout;
-    __Vfunc_col__7__index = vlSelf->testcheckbytower__DOT__kingPosition;
-    __Vfunc_col__7__Vfuncout = (7U & (IData)(__Vfunc_col__7__index));
-    testcheckbytower__DOT__dut__DOT__col = __Vfunc_col__7__Vfuncout;
+    __Vfunc_row__14__index = vlSelf->testcheckbytower__DOT__kingPosition;
+    __Vfunc_row__14__Vfuncout = (7U & ((IData)(__Vfunc_row__14__index) 
+                                       >> 3U));
+    testcheckbytower__DOT__dut__DOT__row = __Vfunc_row__14__Vfuncout;
+    __Vfunc_col__15__index = vlSelf->testcheckbytower__DOT__kingPosition;
+    __Vfunc_col__15__Vfuncout = (7U & (IData)(__Vfunc_col__15__index));
+    testcheckbytower__DOT__dut__DOT__col = __Vfunc_col__15__Vfuncout;
+    vlSelf->testcheckbytower__DOT__valid = (((1U & 
+                                              (vlSelf->testcheckbytower__DOT__board
+                                               [([&]() {
+                            vlSelf->__Vfunc_fullcoord__16__col 
+                                = testcheckbytower__DOT__dut__DOT__col;
+                            vlSelf->__Vfunc_fullcoord__16__row 
+                                = testcheckbytower__DOT__dut__DOT__row;
+                            vlSelf->__Vfunc_fullcoord__16__Vfuncout 
+                                = (((IData)(vlSelf->__Vfunc_fullcoord__16__row) 
+                                    << 3U) | (IData)(vlSelf->__Vfunc_fullcoord__16__col));
+                        }(), (IData)(vlSelf->__Vfunc_fullcoord__16__Vfuncout))] 
+                                               >> 3U)) 
+                                             == (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                            & (6U == 
+                                               (7U 
+                                                & vlSelf->testcheckbytower__DOT__board
+                                                [([&]() {
+                        vlSelf->__Vfunc_fullcoord__17__col 
+                            = testcheckbytower__DOT__dut__DOT__col;
+                        vlSelf->__Vfunc_fullcoord__17__row 
+                            = testcheckbytower__DOT__dut__DOT__row;
+                        vlSelf->__Vfunc_fullcoord__17__Vfuncout 
+                            = (((IData)(vlSelf->__Vfunc_fullcoord__17__row) 
+                                << 3U) | (IData)(vlSelf->__Vfunc_fullcoord__17__col));
+                    }(), (IData)(vlSelf->__Vfunc_fullcoord__17__Vfuncout))])));
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[0U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = vlSelf->__Vfunc_fullcoord__8__col;
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = vlSelf->__Vfunc_fullcoord__18__col;
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[1U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (8U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (8U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[2U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (0x10U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (0x10U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[3U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (0x18U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (0x18U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[4U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (0x20U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (0x20U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[5U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (0x28U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (0x28U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[6U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (0x30U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (0x30U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__wholecol[7U] 
         = vlSelf->testcheckbytower__DOT__board[([&]() {
-            vlSelf->__Vfunc_fullcoord__8__col = testcheckbytower__DOT__dut__DOT__col;
-            vlSelf->__Vfunc_fullcoord__8__Vfuncout 
-                = (0x38U | (IData)(vlSelf->__Vfunc_fullcoord__8__col));
-        }(), (IData)(vlSelf->__Vfunc_fullcoord__8__Vfuncout))];
+            vlSelf->__Vfunc_fullcoord__18__col = testcheckbytower__DOT__dut__DOT__col;
+            vlSelf->__Vfunc_fullcoord__18__Vfuncout 
+                = (0x38U | (IData)(vlSelf->__Vfunc_fullcoord__18__col));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__18__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[0U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                   << 3U);
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[1U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (1U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[2U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (2U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[3U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (3U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[4U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (4U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[5U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (5U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[6U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (6U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
+    vlSelf->testcheckbytower__DOT__dut__DOT__wholerow[7U] 
+        = vlSelf->testcheckbytower__DOT__board[([&]() {
+            vlSelf->__Vfunc_fullcoord__19__row = testcheckbytower__DOT__dut__DOT__row;
+            vlSelf->__Vfunc_fullcoord__19__Vfuncout 
+                = (7U | ((IData)(vlSelf->__Vfunc_fullcoord__19__row) 
+                         << 3U));
+        }(), (IData)(vlSelf->__Vfunc_fullcoord__19__Vfuncout))];
     vlSelf->testcheckbytower__DOT__dut__DOT__status_col[0U] 
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [0U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [0U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [0U])))
                                    ? 0U : 2U));
@@ -701,7 +1282,7 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [1U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [1U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [1U])))
                                    ? 0U : 2U));
@@ -709,7 +1290,7 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [2U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [2U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [2U])))
                                    ? 0U : 2U));
@@ -717,7 +1298,7 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [3U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [3U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [3U])))
                                    ? 0U : 2U));
@@ -725,7 +1306,7 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [4U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [4U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [4U])))
                                    ? 0U : 2U));
@@ -733,7 +1314,7 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [5U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [5U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [5U])))
                                    ? 0U : 2U));
@@ -741,7 +1322,7 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [6U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [6U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                              [6U])))
                                    ? 0U : 2U));
@@ -749,8 +1330,72 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
         = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                    [7U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
                                            [7U] >> 3U)) 
-                                    != (IData)(testcheckbytower__DOT__dut__DOT__playing)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
                                    & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholecol
+                                             [7U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[0U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [0U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [0U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [0U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[1U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [1U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [1U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [1U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[2U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [2U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [2U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [2U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[3U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [3U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [3U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [3U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[4U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [4U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [4U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [4U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[5U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [5U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [5U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [5U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[6U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [6U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [6U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                             [6U])))
+                                   ? 0U : 2U));
+    testcheckbytower__DOT__dut__DOT__status_row[7U] 
+        = ((0U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                   [7U])) ? 1U : ((((1U & (vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
+                                           [7U] >> 3U)) 
+                                    != (IData)(vlSelf->testcheckbytower__DOT__playing)) 
+                                   & (4U == (7U & vlSelf->testcheckbytower__DOT__dut__DOT__wholerow
                                              [7U])))
                                    ? 0U : 2U));
     testcheckbytower__DOT__dut__DOT__lefttowerattack 
@@ -858,9 +1503,55 @@ VL_INLINE_OPT void Vtestcheckbytower___024root___act_sequent__TOP__0(Vtestcheckb
                                                                   (7U 
                                                                    & ((IData)(testcheckbytower__DOT__dut__DOT__row) 
                                                                       - (IData)(7U)))])))))))));
-    vlSelf->testcheckbytower__DOT__attacked = testcheckbytower__DOT__dut__DOT__lefttowerattack;
+    testcheckbytower__DOT__dut__DOT__righttowerattack 
+        = (((((IData)(1U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+             > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+            & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+               [(7U & ((IData)(1U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))])) 
+           | (((1U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                [(7U & ((IData)(1U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]) 
+               & ((((IData)(2U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                   > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                  & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                     [(7U & ((IData)(2U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]))) 
+              | (((1U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                   [(7U & ((IData)(2U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]) 
+                  & ((((IData)(3U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                      > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                     & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                        [(7U & ((IData)(3U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]))) 
+                 | (((1U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                      [(7U & ((IData)(3U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]) 
+                     & ((((IData)(4U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                         > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                        & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                           [(7U & ((IData)(4U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]))) 
+                    | (((1U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                         [(7U & ((IData)(4U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]) 
+                        & ((((IData)(5U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                            > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                           & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                              [(7U & ((IData)(5U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]))) 
+                       | (((1U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                            [(7U & ((IData)(5U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]) 
+                           & ((((IData)(6U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                               > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                              & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                                 [(7U & ((IData)(6U) 
+                                         + (IData)(testcheckbytower__DOT__dut__DOT__row)))]))) 
+                          | ((1U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                              [(7U & ((IData)(6U) + (IData)(testcheckbytower__DOT__dut__DOT__row)))]) 
+                             & ((((IData)(7U) + (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                                 > (IData)(testcheckbytower__DOT__dut__DOT__row)) 
+                                & (0U == vlSelf->testcheckbytower__DOT__dut__DOT__status_col
+                                   [(7U & ((IData)(7U) 
+                                           + (IData)(testcheckbytower__DOT__dut__DOT__row)))])))))))));
+    vlSelf->testcheckbytower__DOT__attacked = ((IData)(testcheckbytower__DOT__dut__DOT__lefttowerattack) 
+                                               | (IData)(testcheckbytower__DOT__dut__DOT__righttowerattack));
     vlSelf->testcheckbytower__DOT__out_lefttowerattack 
         = testcheckbytower__DOT__dut__DOT__lefttowerattack;
+    vlSelf->testcheckbytower__DOT__out_righttowerattack 
+        = testcheckbytower__DOT__dut__DOT__righttowerattack;
     vlSelf->testcheckbytower__DOT__out_status_col[7U] 
         = vlSelf->testcheckbytower__DOT__dut__DOT__status_col
         [7U];
