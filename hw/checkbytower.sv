@@ -46,6 +46,8 @@ module checkbytower (
     logic [2:0] col;
     logic lefttowerattack;
     logic righttowerattack;
+    logic uptowerattack;
+    logic downtowerattack;
     fullpiece_t wholecol [7:0];
     fullpiece_t wholerow [7:0];
     logic [1:0] status_col [7:0];
@@ -55,6 +57,7 @@ module checkbytower (
     always_comb begin: combinatorial
     row=chesstypes::row(kingPosition);
     col=chesstypes::col(kingPosition);
+
     valid=(board[fullcoord(row,col)].color==playing&&board[fullcoord(row,col)].piece==KING);
 
     for(int i=0;i<8;i=i+1)begin
@@ -100,7 +103,33 @@ module checkbytower (
 
     ))))));
 
-    attacked=lefttowerattack|righttowerattack;
+    uptowerattack=
+    ((col+1)>col&&status_row[col+1]==`ENEMYROOK)||((status_row[col+1]==`EMPTY)&
+    ((col+2)>col&&status_row[col+2]==`ENEMYROOK)||((status_row[col+2]==`EMPTY)&
+    ((col+3)>col&&status_row[col+3]==`ENEMYROOK)||((status_row[col+3]==`EMPTY)&
+    ((col+4)>col&&status_row[col+4]==`ENEMYROOK)||((status_row[col+4]==`EMPTY)&
+    ((col+5)>col&&status_row[col+5]==`ENEMYROOK)||((status_row[col+5]==`EMPTY)&
+    ((col+6)>col&&status_row[col+6]==`ENEMYROOK)||((status_row[col+6]==`EMPTY)&
+    ((col+7)>col&&status_row[col+7]==`ENEMYROOK)
+
+
+    ))))));
+
+      downtowerattack=
+    ((col-1)<col&&status_row[col-1]==`ENEMYROOK)||((status_row[col-1]==`EMPTY)&
+    ((col-2)<col&&status_row[col-2]==`ENEMYROOK)||((status_row[col-2]==`EMPTY)&
+    ((col-3)<col&&status_row[col-3]==`ENEMYROOK)||((status_row[col-3]==`EMPTY)&
+    ((col-4)<col&&status_row[col-4]==`ENEMYROOK)||((status_row[col-4]==`EMPTY)&
+    ((col-5)<col&&status_row[col-5]==`ENEMYROOK)||((status_row[col-5]==`EMPTY)&
+    ((col-6)<col&&status_row[col-6]==`ENEMYROOK)||((status_row[col-6]==`EMPTY)&
+    ((col-7)<col&&status_row[col-7]==`ENEMYROOK)
+
+
+    ))))));
+
+
+
+    attacked=lefttowerattack|righttowerattack|uptowerattack|downtowerattack;
 
 
      out_lefttowerattack=lefttowerattack; 

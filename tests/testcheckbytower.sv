@@ -73,12 +73,14 @@ logic [1:0] out_status_row [7:0];
         logic [1:0] status_looking_at;
         
         
-        $display("first easy test with empty board");
+        $display("TEST: empty board");
         clearBoard();
         kingPosition=0;
 
         #1
-
+        if(valid)begin
+            $display("This shouldnt be valid as there is no king on the board!");
+        end
         if(attacked)begin
             $display("for some reason we are attacked on an empty board");
             if(out_lefttowerattack)begin
@@ -199,6 +201,48 @@ logic [1:0] out_status_row [7:0];
             
             end
 
+        end
+
+
+        $display("TEST: check totally different space");
+        clearBoard();
+        kingPosition=fullcoord(3'd6,3'd3);
+        playing=WHITE;
+        board[kingPosition].piece=KING;
+        board[kingPosition].color=WHITE;
+
+        board[fullcoord(3'd5,3'd7)].piece=ROOK;
+        board[fullcoord(3'd5,3'd7)].color=BLACK;
+        #2
+        if(~valid)begin
+            $display("this should be valid, there is a king here!");
+        end
+        if(attacked)begin
+            $display("this shouldn't be attacked, they have different coordinates!");
+        end
+
+          $display("TEST: same row different col!");
+        clearBoard();
+
+     
+        //king at
+        kingPosition=fullcoord(3'd1,3'd7);
+        playing=BLACK;
+        board[fullcoord(3'd1,3'd7)].piece=KING;                
+        board[fullcoord(3'd1,3'd7)].color=BLACK;
+
+        //#2//This one doesnt do anything because it isn't clocked.
+        
+
+        //Tower at 3,7
+        board[fullcoord(3'd1,3'd4)].piece=PAWN;
+        board[fullcoord(3'd1,3'd4)].color=BLACK;
+        #2
+        if(~valid)begin
+            $display("valid means that kingposition is correct, and it is!");
+        end
+        if(attacked)begin
+            $display("we are in fact not attacked so this is a bit weird!");
         end
         
 
