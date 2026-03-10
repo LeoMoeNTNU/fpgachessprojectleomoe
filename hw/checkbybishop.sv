@@ -89,13 +89,13 @@ module checkbybishop (
 
 
     attack2=
-    ((row+1)>row&&(col-1)<col&&status_plusplus[row+1]==`ENEMYBISHOP)||((status_plusplus[row+1]==`EMPTY)&
-    ((row+2)>row&&(col-2)<col&&status_plusplus[row+2]==`ENEMYBISHOP)||((status_plusplus[row+2]==`EMPTY)&
-    ((row+3)>row&&(col-3)<col&&status_plusplus[row+3]==`ENEMYBISHOP)||((status_plusplus[row+3]==`EMPTY)&
-    ((row+4)>row&&(col-4)<col&&status_plusplus[row+4]==`ENEMYBISHOP)||((status_plusplus[row+4]==`EMPTY)&
-    ((row+5)>row&&(col-5)<col&&status_plusplus[row+5]==`ENEMYBISHOP)||((status_plusplus[row+5]==`EMPTY)&
-    ((row+6)>row&&(col-6)<col&&status_plusplus[row+6]==`ENEMYBISHOP)||((status_plusplus[row+6]==`EMPTY)&
-    ((row+7)>row&&(col-7)<col&&status_plusplus[row+7]==`ENEMYBISHOP)
+    ((row+1)>row&&(col+1)>col&&status_plusplus[row+1]==`ENEMYBISHOP)||((status_plusplus[row+1]==`EMPTY)&
+    ((row+2)>row&&(col+2)>col&&status_plusplus[row+2]==`ENEMYBISHOP)||((status_plusplus[row+2]==`EMPTY)&
+    ((row+3)>row&&(col+3)>col&&status_plusplus[row+3]==`ENEMYBISHOP)||((status_plusplus[row+3]==`EMPTY)&
+    ((row+4)>row&&(col+4)>col&&status_plusplus[row+4]==`ENEMYBISHOP)||((status_plusplus[row+4]==`EMPTY)&
+    ((row+5)>row&&(col+5)>col&&status_plusplus[row+5]==`ENEMYBISHOP)||((status_plusplus[row+5]==`EMPTY)&
+    ((row+6)>row&&(col+6)>col&&status_plusplus[row+6]==`ENEMYBISHOP)||((status_plusplus[row+6]==`EMPTY)&
+    ((row+7)>row&&(col+7)>col&&status_plusplus[row+7]==`ENEMYBISHOP)
 
 
     ))))));

@@ -44,6 +44,28 @@ logic valid;
         end
     endtask
 
+    task testbishopattack(int x1, int x2, int y1, int y2);
+       
+        $display("TEST: empty board, king (%0d,%0d) enemy bishop (%0d,%0d) ");
+        clearBoard();
+        kingPosition=fullcoord(3'(x1),3'(x2));
+        playing=BLACK;
+        board[kingPosition].piece=KING;
+        board[kingPosition].color=BLACK;
+
+        board[fullcoord(3'(y1),3'(y2))].piece=BISHOP;
+        board[fullcoord(3'(y1),3'(y2))].color=WHITE;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(~attacked)begin
+            $display("(%0d,%0d), (%0d,%0d) isnt an attack!",x1,x2,y1,y2);
+        end
+       
+    endtask
+
+
     always begin
 
     end
@@ -68,15 +90,15 @@ logic valid;
             
         end
 
-        $display("TEST basic bishop threatening from plus plus");
+        $display("TEST basic bishop threatening in all directions:");
         clearBoard();
-        kingPosition=fullcoord(3'd0,3'd4);
+        kingPosition=fullcoord(3'd4,3'd4);
         playing=WHITE;
         board[kingPosition].piece=KING;
         board[kingPosition].color=WHITE;
 
-        board[fullcoord(3'd1,3'd5)].piece=BISHOP;
-        board[fullcoord(3'd1,3'd5)].color=BLACK;
+        board[fullcoord(3'd5,3'd5)].piece=BISHOP;
+        board[fullcoord(3'd5,3'd5)].color=BLACK;
         #2
         if(~valid)begin
             $display("this should be validly pointing at king");
@@ -85,6 +107,117 @@ logic valid;
             $display("this should be a valid attack at the king!");
         end
 
+        board[fullcoord(3'd5,3'd5)].piece=EMPTY;
+
+        #2 
+
+        if(attacked)begin
+            $display("shouldn't be attacked here!");
+        end
+        if(~valid)begin
+            $display("should be valid!");
+        end
+
+        board[fullcoord(3'd3,3'd3)].piece=BISHOP;
+        board[fullcoord(3'd3,3'd3)].color=BLACK;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(~attacked)begin
+            $display("this should be a valid attack at the king!");
+        end
+
+        board[fullcoord(3'd3,3'd3)].piece=EMPTY;
+        #2
+        if(attacked)begin
+            $display("shouldn't be attacked here!");
+        end
+        if(~valid)begin
+            $display("should be valid!");
+        end
+
+
+        
+        board[fullcoord(3'd5,3'd3)].piece=BISHOP;
+        board[fullcoord(3'd5,3'd3)].color=BLACK;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(~attacked)begin
+            $display("this should be a valid attack at the king!");
+        end
+
+        board[fullcoord(3'd5,3'd3)].piece=EMPTY;
+        #2
+        if(attacked)begin
+            $display("shouldn't be attacked here!");
+        end
+        if(~valid)begin
+            $display("should be valid!");
+        end
+
+
+         board[fullcoord(3'd3,3'd5)].piece=BISHOP;
+        board[fullcoord(3'd3,3'd5)].color=BLACK;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(~attacked)begin
+            $display("this should be a valid attack at the king!");
+        end
+
+        board[fullcoord(3'd3,3'd5)].piece=EMPTY;
+        #2
+        if(attacked)begin
+            $display("shouldn't be attacked here!");
+        end
+        if(~valid)begin
+            $display("should be valid!");
+        end
+        #2
+        $display("TEST: from (3,3) to (5,5)");
+        clearBoard();
+        kingPosition=fullcoord(3'd3,3'd3);
+        playing=BLACK;
+        board[kingPosition].piece=KING;
+        board[kingPosition].color=BLACK;
+
+        board[fullcoord(3'd5,3'd5)].piece=BISHOP;
+        board[fullcoord(3'd5,3'd5)].color=WHITE;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(~attacked)begin
+            $display("All the way up there isn't an attack apparently!");
+        end
+
+
+        $display("TEST: from (2,2) to (5,5)");
+        clearBoard();
+        kingPosition=fullcoord(3'd2,3'd2);
+        playing=BLACK;
+        board[kingPosition].piece=KING;
+        board[kingPosition].color=BLACK;
+
+        board[fullcoord(3'd5,3'd5)].piece=BISHOP;
+        board[fullcoord(3'd5,3'd5)].color=WHITE;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(~attacked)begin
+            $display("All the way up there isn't an attack apparently!");
+        end
+
+        $display("TEST: (1,1), (5,5)");
+        testbishopattack(1,1,5,5);
+
+$display("TEST: (1,1), (4,4)");
+         testbishopattack(1,1,4,4);
 
 
 
