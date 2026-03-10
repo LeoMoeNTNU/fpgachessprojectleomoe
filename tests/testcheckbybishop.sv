@@ -46,7 +46,7 @@ logic valid;
 
     task testbishopattack(int x1, int x2, int y1, int y2);
        
-        $display("TEST: empty board, king (%0d,%0d) enemy bishop (%0d,%0d) ");
+        $display("TEST: empty board, king (%0d,%0d) enemy bishop (%0d,%0d) ",x1,x2,y1,y2);
         clearBoard();
         kingPosition=fullcoord(3'(x1),3'(x2));
         playing=BLACK;
@@ -178,46 +178,28 @@ logic valid;
             $display("should be valid!");
         end
         #2
-        $display("TEST: from (3,3) to (5,5)");
-        clearBoard();
-        kingPosition=fullcoord(3'd3,3'd3);
-        playing=BLACK;
-        board[kingPosition].piece=KING;
-        board[kingPosition].color=BLACK;
+        
+   testbishopattack(3,3,5,5);
+        
+        
+                testbishopattack(2,2,5,5);
 
-        board[fullcoord(3'd5,3'd5)].piece=BISHOP;
-        board[fullcoord(3'd5,3'd5)].color=WHITE;
-        #2
-        if(~valid)begin
-            $display("this should be validly pointing at king");
-        end
-        if(~attacked)begin
-            $display("All the way up there isn't an attack apparently!");
-        end
-
-
-        $display("TEST: from (2,2) to (5,5)");
-        clearBoard();
-        kingPosition=fullcoord(3'd2,3'd2);
-        playing=BLACK;
-        board[kingPosition].piece=KING;
-        board[kingPosition].color=BLACK;
-
-        board[fullcoord(3'd5,3'd5)].piece=BISHOP;
-        board[fullcoord(3'd5,3'd5)].color=WHITE;
-        #2
-        if(~valid)begin
-            $display("this should be validly pointing at king");
-        end
-        if(~attacked)begin
-            $display("All the way up there isn't an attack apparently!");
-        end
-
-        $display("TEST: (1,1), (5,5)");
         testbishopattack(1,1,5,5);
 
-$display("TEST: (1,1), (4,4)");
          testbishopattack(1,1,4,4);
+
+            testbishopattack(0,0,7,7);
+
+
+            testbishopattack(7,7,0,0);
+
+                        testbishopattack(7,0,0,7);
+
+                                    testbishopattack(1,2,5,6);
+
+
+
+
 
 
 
