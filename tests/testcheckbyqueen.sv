@@ -65,6 +65,27 @@ logic valid;
        
     endtask
 
+     task testqueenattackfalse(int x1, int x2, int y1, int y2);
+       
+        $display("TEST: empty board, king (%0d,%0d) enemy queen (%0d,%0d) (ASSUMING FALSE)",x1,x2,y1,y2);
+        clearBoard();
+        kingPosition=fullcoord(3'(x1),3'(x2));
+        playing=BLACK;
+        board[kingPosition].piece=KING;
+        board[kingPosition].color=BLACK;
+
+        board[fullcoord(3'(y1),3'(y2))].piece=QUEEN;
+        board[fullcoord(3'(y1),3'(y2))].color=WHITE;
+        #2
+        if(~valid)begin
+            $display("this should be validly pointing at king");
+        end
+        if(attacked)begin
+            $display("(%0d,%0d), (%0d,%0d) isnt an attack!",x1,x2,y1,y2);
+        end
+       
+    endtask
+
 
     always begin
 
@@ -206,6 +227,9 @@ testqueenattack(1,1,5,1);
                         testqueenattack(0,0,0,7);
 
 
+        testqueenattackfalse(0, 0, 1, 3);
+
+                testqueenattackfalse(3, 5, 1, 4);
 
 
         
