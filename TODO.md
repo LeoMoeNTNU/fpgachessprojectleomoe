@@ -2,7 +2,8 @@
 It seems to be working but we never know with these things. 
 At least some boundary tests would be nice. 
 
-# checkbybishop is built but needs more testing.
+# I need to make some negative tests for both queen and bishop
+
 
 # generalized script for testing simple components. 
 having a bunch of shell scripts that are barely different seems a bit superfluous.  
