@@ -34,6 +34,8 @@ module checkbyknight (
     logic downleft;
     logic rightdown;
     logic rightup;
+    logic [2:0] row;
+    logic [2:0] col;
 
         always_comb begin: combinatorial
 
@@ -42,19 +44,19 @@ module checkbyknight (
 
     valid=(board[fullcoord(row,col)].color==playing&&board[fullcoord(row,col)].piece==KING);
 
-    upleft= (row-1<row)&& (col+2>col)&& board[fullcoord(row-1,col+2)].color!=playing&&board[fullcoord(row-1,col+2)==KNIGHT];
-    upright= (row+1>row)&& (col+2>col)&& board[fullcoord(row+1,col+2)].color!=playing&&board[fullcoord(row+1,col+2)==KNIGHT];
+    upleft= (row-1<row)&& (col+2>col)&& board[fullcoord(row-1,col+2)].color!=playing&&board[fullcoord(row-1,col+2)].piece==KNIGHT;
+    upright= (row+1>row)&& (col+2>col)&& board[fullcoord(row+1,col+2)].color!=playing&&board[fullcoord(row+1,col+2)].piece==KNIGHT;
 
-    leftup= (row-2<row)&& (col+1>col)&& board[fullcoord(row-2,col+1)].color!=playing&&board[fullcoord(row-2,col+1)==KNIGHT];
-    leftdown= (row-2<row)&& (col-1<col)&& board[fullcoord(row-2,col-1)].color!=playing&&board[fullcoord(row-2,col-1)==KNIGHT];
+    leftup= (row-2<row)&& (col+1>col)&& board[fullcoord(row-2,col+1)].color!=playing&&board[fullcoord(row-2,col+1)].piece==KNIGHT;
+    leftdown= (row-2<row)&& (col-1<col)&& board[fullcoord(row-2,col-1)].color!=playing&&board[fullcoord(row-2,col-1)].piece==KNIGHT;
 
-    downright=(row+1>row)&& (col-2<col)&& board[fullcoord(row+1,col-2)].color!=playing&&board[fullcoord(row+1,col-2)==KNIGHT];
-    downleft=  (row-1<row)&& (col-2<col)&& board[fullcoord(row-1,col-2)].color!=playing&&board[fullcoord(row-1,col-2)==KNIGHT];
+    downright=(row+1>row)&& (col-2<col)&& board[fullcoord(row+1,col-2)].color!=playing&&board[fullcoord(row+1,col-2)].piece==KNIGHT;
+    downleft=  (row-1<row)&& (col-2<col)&& board[fullcoord(row-1,col-2)].color!=playing&&board[fullcoord(row-1,col-2)].piece==KNIGHT;
 
-    rightdown=(row+2>row)&& (col-1<col)&& board[fullcoord(row+2,col-1)].color!=playing&&board[fullcoord(row+2,col-1)==KNIGHT];
-    rightup=(row+2>row)&& (col+1>col)&& board[fullcoord(row+2,col+1)].color!=playing&&board[fullcoord(row+2,col+1)==KNIGHT];
+    rightdown=(row+2>row)&& (col-1<col)&& board[fullcoord(row+2,col-1)].color!=playing&&board[fullcoord(row+2,col-1)].piece==KNIGHT;
+    rightup=(row+2>row)&& (col+1>col)&& board[fullcoord(row+2,col+1)].color!=playing&&board[fullcoord(row+2,col+1)].piece==KNIGHT;
             
-    attacked=upleft|upright|leftup|leftdown|downright|downleft|rightdown|rightleft;
+    attacked=upleft|upright|leftup|leftdown|downright|downleft|rightdown|rightup;
 
         end
 
