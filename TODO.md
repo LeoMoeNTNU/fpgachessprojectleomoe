@@ -1,3 +1,9 @@
+# more tests on movevector: 
+Test with several moves. 
+Check that it can zero out and keep going up. 
+
+# HIGH PRIORITY: GET THE MOVE VECTOR TO ACTUALLY DO WHAT IT IS SUPPOSED TO. 
+
 # more tests on testcheckfrom pawn
 It seems to be working but we never know with these things. 
 At least some boundary tests would be nice. 
