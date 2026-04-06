@@ -1,0 +1,18 @@
+import chesstypes::*;
+
+
+module MODULENAME (
+    input  fullpiece_t board [63:0],
+    input  logic [5:0] kingPosition,
+
+    input color_t playing,
+
+    output color_t winning,
+    output [15:0] value
+
+);
+
+
+
+
+endmodule

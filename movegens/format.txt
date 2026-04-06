@@ -1,0 +1,12 @@
+the format for a movegen needs a few things: 
+1. it needs a protocol
+2. it gets a full board as input. 
+3. it gives a full board as output. 
+
+The protocol will look something like: 
+1. get ready from input. 
+2. start outputting full boardstates out with a valid. 
+    it also needs to also output whether the board is valid, for some reason. 
+3. and then it will tell us when it is done. 
+
+does it also need to output the actual position that it went to?
