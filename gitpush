@@ -1,1 +1,1 @@
-git push origin master:main
+git push --force origin master:main

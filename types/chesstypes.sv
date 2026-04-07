@@ -35,7 +35,7 @@ typedef struct packed{
     piece_t piece;
 } fullpiece_t;
 
-typedef struct {
+typedef struct packed {
     fullpiece_t board[63:0];
     logic [7:0] whitekingposition;
     logic [7:0] blackkingposition;
