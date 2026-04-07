@@ -2,8 +2,6 @@ module MODULENAME (
 
     state_t state,    
 
-    input color_t playing,
-
     output color_t winning,
     output [15:0] value
 

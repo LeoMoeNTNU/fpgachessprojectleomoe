@@ -30,15 +30,16 @@ typedef enum logic [2:0] {
 
 
 
-typedef struct packed{
+typedef struct {
     color_t color;
     piece_t piece;
 } fullpiece_t;
 
-typedef struct packed {
+typedef struct {
     fullpiece_t board[63:0];
     logic [7:0] whitekingposition;
     logic [7:0] blackkingposition;
+    logic playing;
     logic enpassantlegal;
     logic [7:0] enpassantposition;
     logic castlingallowed [3:0];

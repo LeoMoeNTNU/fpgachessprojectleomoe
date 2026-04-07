@@ -87,11 +87,6 @@ logic valid;
     endtask
 
 
-    always begin
-
-    end
-
-
     initial begin
 
         
