@@ -36,6 +36,7 @@ module testmaterialcount;
     
     state.board[20].color=BLACK;
     state.board[20].piece=QUEEN;
+    
     #2
     if(winning!=BLACK)begin
         $display("black should be winning but isn't?");
@@ -46,8 +47,9 @@ module testmaterialcount;
 
     $display("TEST: inserting some material on both sides and then checking if the balance is right");
     
-    clearinput();
-     #2
+    //clearinput();
+    state.board[20].piece=EMPTY;
+     #100
      if(value!=0)begin
         $display("value should be 0 after we reset again, but is %0d",value);
     end
