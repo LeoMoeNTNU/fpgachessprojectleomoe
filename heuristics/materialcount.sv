@@ -12,10 +12,10 @@ module materialcount (
     logic [15:0] blacksum;
     logic [15:0] whitesum;
 
-    logic [3:0] blackvalues [63:0];
-    logic [3:0] whitevalues [63:0];
+    logic [15:0] blackvalues [63:0];
+    logic [15:0] whitevalues [63:0];
 
-      always_comb begin: combinatorial
+    always_comb begin: combinatorial
       
     blacksum=0;
     whitesum=0;
@@ -45,7 +45,6 @@ module materialcount (
             {WHITE,KING}:begin 
                 blackvalues[i]=0;whitevalues[i]=0;
             end
-
             {BLACK,EMPTY}:begin 
                 blackvalues[i]=0;whitevalues[i]=0;
             end
@@ -73,8 +72,8 @@ module materialcount (
                 blackvalues[i]=0;whitevalues[i]=0;
             end
         endcase
-        blacksum+={12'd0,blackvalues[i]};
-        whitesum+={12'd0,whitevalues[i]};
+        blacksum+=blackvalues[i];
+        whitesum+=whitevalues[i];
     end
 
     value=(whitesum>blacksum)?(whitesum-blacksum):(blacksum-whitesum);
