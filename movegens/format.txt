@@ -10,3 +10,14 @@ The protocol will look something like:
 3. and then it will tell us when it is done. 
 
 does it also need to output the actual position that it went to?
+
+
+module MODULENAME (
+
+    input state_t state,    
+    output state_t out_state,
+    output logic validoutstate,
+    
+  
+
+);

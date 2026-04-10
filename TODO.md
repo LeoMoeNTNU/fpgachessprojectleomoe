@@ -2,6 +2,8 @@
 There are also probably syntax errors. 
 This will be super integral to the whole thing, so at some point I will retunr to it and make it really good, potentially. 
 
+# more tests for materialcount. 
+I have written some, but I could have written a lot more. As of now, idk yet. 
 
 # more tests on movevector: 
 Test with several moves. 
@@ -15,13 +17,8 @@ At least some boundary tests would be nice.
 # generalized script for testing simple components. 
 having a bunch of shell scripts that are barely different seems a bit superfluous.  
 
-# heuristics. 
-I made the interface. The next step will probably be to just add the material value. 
-To do this, I wil have to have a summing system, either with .sum or I just implement something myself!
-
 ## The heuristic should probably emphasize captures or supported threats 
 It should also be fairly aggressive because it should only look at 4-10 moves most of the time. 
-
 
 # check for repeated state 
 This may be a difficult component to write. 
