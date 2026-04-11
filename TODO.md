@@ -1,3 +1,10 @@
+# actually finish the heuristic. It only works for black right now. 
+
+# in order to finish kingmoves, I need to also build a component that figures out if youre allowed to castle. 
+
+# to do this I need a component that checks if a piece is threatened. 
+This I almost have, so I just have to implement it. 
+
 # I have roughly written boardrep but it still needs a lot of testing and verification. 
 There are also probably syntax errors. 
 This will be super integral to the whole thing, so at some point I will retunr to it and make it really good, potentially. 

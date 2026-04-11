@@ -14,10 +14,12 @@ does it also need to output the actual position that it went to?
 
 module MODULENAME (
 
-    input state_t state,    
+    input ready,
+    input state_t state,  
+    input logic [7:0] position,   
     output state_t out_state,
     output logic validoutstate,
-    
+    output valid
   
 
 );

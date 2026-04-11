@@ -45,6 +45,22 @@ typedef struct packed {
     logic [3:0]castlingallowed;
 } state_t;
 
+function automatic logic whiteleftcastlingallowed(input state_t state);
+    return state.castlingallowed[0];
+endfunction
+
+function automatic logic whiterightcastlingallowed(input state_t state);
+    return state.castlingallowed[1];
+endfunction
+
+function automatic logic blackleftcastlingallowed(input state_t state);
+    return state.castlingallowed[2];
+endfunction
+
+function automatic logic blackrightcastlingallowed(input state_t state);
+    return state.castlingallowed[3];
+endfunction
+
 
 
 /*
