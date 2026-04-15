@@ -1,6 +1,11 @@
-# actually finish the heuristic. It only works for black right now. 
 
-# in order to finish kingmoves, I need to also build a component that figures out if youre allowed to castle. 
+# king moves plan: 
+## 1: implement just the protocol. 
+
+## 2: implement it but without the castling. 
+
+## 3: implement it with the castling as well.
+
 
 # to do this I need a component that checks if a piece is threatened. 
 This I almost have, so I just have to implement it. 

@@ -16,7 +16,8 @@ module MODULENAME (
 
     input ready,
     input state_t state,  
-    input logic [7:0] position,   
+    input logic [7:0] position,  
+    input logic clk, 
     output state_t out_state,
     output logic validoutstate,
     output valid
