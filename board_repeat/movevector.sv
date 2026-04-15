@@ -37,7 +37,7 @@ function automatic logic [5:0] from(input logic [11:0] fromto);
     for(int i=0;i<12;i=i+1)begin
         taken[i]=(to(vectorIn[i])==from(moveIn));
         vectorBetween[i]=taken[i]?
-                                ((from(vectorIn[i])==to(moveIn))?12'd0:{from(vectorIn[i]),to(moveIn)}):
+                                ((from(vectorIn[i])==to(moveIn))? 12'd0 : {from(vectorIn[i]),to(moveIn)}):
                         vectorIn[i];
         //If to=from and from=to, then we have to zero it out. 
         //I could write this move effectively with the |= operator. 
@@ -46,9 +46,9 @@ function automatic logic [5:0] from(input logic [11:0] fromto);
 
     
     somethingtaken = 1'b0;
-for (int i = 0; i < 12; i++)
-    somethingtaken |= taken[i];
-
+    for (int i = 0; i < 12; i++)begin
+        somethingtaken |= taken[i];
+    end
     highestindex=highestindexIn;
     if(!somethingtaken)begin
 
