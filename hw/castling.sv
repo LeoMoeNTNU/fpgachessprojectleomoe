@@ -46,7 +46,9 @@ module castling(
         .state(state),
         .leftcastleallowed(leftcastleallowed),
         .rightcastleallowed(rightcastleallowed),
-        .threat(threat)
+        .threat(threat),
+        .out_lefttile_threatened(out_lefttile_threatened),
+        .out_righttile_threatened(out_righttile_threatened)
     );
     // verilator lint_on NULLPORT
 
@@ -60,7 +62,9 @@ module castling_test (
     
     output logic leftcastleallowed,
     output logic rightcastleallowed,
-    output logic [7:0] threat
+    output logic [5:0] threat,
+    output out_lefttile_threatened,
+    output out_righttile_threatened
 
 
 );
@@ -71,7 +75,6 @@ logic lefttiles_unthreatened;
 logic righttiles_unthreatened;
 logic lefttile_threatened;
 logic righttile_threatened;
-
 threatened t0(
     .board(state.board),
     .playing(state.playing),
@@ -111,15 +114,18 @@ threatened t5(
 
     assign lefttile_threatened=threat[0]|threat[1]|threat[2]|threat[3];
 
-assign righttile_threatened= threat[3]|threat[4]|threat[5];
+    assign righttile_threatened= threat[3]|threat[4]|threat[5];
     assign leftcastleallowed=(state.playing==WHITE)?
-    (whiteleftcastlingallowed(state)&lefttile_threatened)
+    (whiteleftcastlingallowed(state)&!lefttile_threatened)
     :
-    (blackleftcastlingallowed(state)&lefttile_threatened);
+    (blackleftcastlingallowed(state)&!lefttile_threatened);
     
     assign rightcastleallowed=(state.playing==WHITE)?
-    (whiterightcastlingallowed(state)&righttile_threatened)
+    (whiterightcastlingallowed(state)&!righttile_threatened)
     :
-    (blackrightcastlingallowed(state)&righttile_threatened);
+    (blackrightcastlingallowed(state)&!righttile_threatened);
+
+    assign out_lefttile_threatened=lefttile_threatened;
+    assign out_righttile_threatened=righttile_threatened;
 
 endmodule

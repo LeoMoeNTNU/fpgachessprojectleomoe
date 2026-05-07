@@ -118,7 +118,7 @@ function state_t get(input string str);
     return to_ret;
 endfunction
 */
-
+/*
 function state_t get(input string str);
      //verilator lint_off IMPLICITSTATIC 
     state_t to_ret = '0;
@@ -238,6 +238,68 @@ function state_t get(input string str);
         iterator=iterator+1;
      end
     
+    return to_ret;
+endfunction
+*/
+function automatic state_t get(input string str);
+    state_t to_ret = '0;
+    int i = 0;
+    int p = 0;
+
+    while (i < str.len() && str[i] != " ") begin
+        case (str[i])
+            "/": ;
+            "1": p += 1;
+            "2": p += 2;
+            "3": p += 3;
+            "4": p += 4;
+            "5": p += 5;
+            "6": p += 6;
+            "7": p += 7;
+            "8": p += 8;
+
+            "r": begin to_ret.board[p].piece = ROOK;   to_ret.board[p].color = BLACK; p++; end
+            "n": begin to_ret.board[p].piece = KNIGHT; to_ret.board[p].color = BLACK; p++; end
+            "b": begin to_ret.board[p].piece = BISHOP; to_ret.board[p].color = BLACK; p++; end
+            "q": begin to_ret.board[p].piece = QUEEN;  to_ret.board[p].color = BLACK; p++; end
+            "k": begin to_ret.board[p].piece = KING;   to_ret.board[p].color = BLACK; p++; end
+            "p": begin to_ret.board[p].piece = PAWN;   to_ret.board[p].color = BLACK; p++; end
+
+            "R": begin to_ret.board[p].piece = ROOK;   to_ret.board[p].color = WHITE; p++; end
+            "N": begin to_ret.board[p].piece = KNIGHT; to_ret.board[p].color = WHITE; p++; end
+            "B": begin to_ret.board[p].piece = BISHOP; to_ret.board[p].color = WHITE; p++; end
+            "Q": begin to_ret.board[p].piece = QUEEN;  to_ret.board[p].color = WHITE; p++; end
+            "K": begin to_ret.board[p].piece = KING;   to_ret.board[p].color = WHITE; p++; end
+            "P": begin to_ret.board[p].piece = PAWN;   to_ret.board[p].color = WHITE; p++; end
+
+            default: begin
+                $display("Unexpected char: %s", str[i]);
+            end
+        endcase
+        i++;
+    end
+
+    while(i<str.len()) begin
+        case(str[i])
+        
+            "b":begin to_ret.playing=BLACK;
+            //$display("player is black!");
+             end
+            "w":begin to_ret.playing=WHITE; 
+            //$display("setting player to white!"); 
+            end
+            "Q":to_ret.castlingallowed[0]=1'd1;
+            "K": to_ret.castlingallowed[1]=1'd1;
+            "k": to_ret.castlingallowed[3]=1'd1;
+            "q":to_ret.castlingallowed[2]=1'd1;
+
+        default: begin 
+            //$display("unexpected char: %d",str[i]);
+        end
+
+        endcase
+        i++;
+    end
 
 
     return to_ret;

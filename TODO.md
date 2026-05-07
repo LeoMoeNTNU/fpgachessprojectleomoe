@@ -10,10 +10,14 @@ I should implement a debug-component for castling and try to figure this out.
 It seems like there is a bug where it doesn't skip out of the while loop for some reason...
 I am still stuck by this thing not working for reasons I don't know. 
 
+    I dont know why I even have the [7:0] threat on castling_test. 
+    SHouldnt it only be 6? 
+
 # I need to implement threatened_by_king lol
 
 # I need to implement a fen to state generator and a printer of board and put both of them in types or make a tools-file. 
 Some of this I have. 
+The fen string right now doesnt deal with where en passants are allowed. 
 
 ## Also build it to go the other way, so that I can write back to fen. 
 This is so that I can compare with other tools. Then I can have way better tests for things. 
