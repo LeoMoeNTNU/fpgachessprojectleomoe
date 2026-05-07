@@ -1,0 +1,8 @@
+module MODULENAME (
+
+    state_t state,    
+
+    output color_t winning,
+    output [15:0] value
+
+);
