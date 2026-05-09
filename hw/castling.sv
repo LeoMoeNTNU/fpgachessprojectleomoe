@@ -39,7 +39,7 @@ module castling(
 
 );
 
-    logic [7:0] threat;
+    logic [5:0] threat;
 
     // verilator lint_off NULLPORT
     castling_test dut(
@@ -70,45 +70,58 @@ module castling_test (
 );
 
 logic [2:0] col;
-assign col= (state.playing==WHITE)?3'd0:3'd7;
+assign col= (state.playing==WHITE)?3'd7:3'd0;
 logic lefttiles_unthreatened;
 logic righttiles_unthreatened;
 logic lefttile_threatened;
 logic righttile_threatened;
+
 threatened t0(
     .board(state.board),
     .playing(state.playing),
-    .coord({3'd1,col}),
+    //.coord({3'd1,col}),
+        .coord({col,3'd1}),
+
     .attacked(threat[0])
 );
 threatened t1(
     .board(state.board),
     .playing(state.playing),
-    .coord({3'd2,col}),
+    //.coord({3'd2,col}),
+    .coord({col,3'd2}),
+
     .attacked(threat[1])
 );
 threatened t2(
     .board(state.board),
     .playing(state.playing),
-    .coord({3'd3,col}),
+    //.coord({3'd3,col}),
+    .coord({col,3'd3}),
+
     .attacked(threat[2])
 );
 threatened t3(
     .board(state.board),
     .playing(state.playing),
-    .coord({3'd4,col}),
+    //.coord({3'd4,col}),
+        .coord({col,3'd4}),
+
     .attacked(threat[3])
 );
 threatened t4(
     .board(state.board),
     .playing(state.playing),
-    .coord({3'd5,col}),
+    //.coord({3'd5,col}),
+    .coord({col,3'd5}),
+
     .attacked(threat[4])
 );
 threatened t5(
     .board(state.board),
     .playing(state.playing),
-    .coord({3'd6,col}),
+
+    //.coord({3'd6,col}),
+    .coord({col,3'd6}),
     .attacked(threat[5])
 );
 

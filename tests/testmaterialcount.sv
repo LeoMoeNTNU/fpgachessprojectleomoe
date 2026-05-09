@@ -66,6 +66,17 @@ module testmaterialcount;
         if(value!=0)$display("black advantage should be 0 but is %0d",value);
 
         #1
+        $display("TEST: taking a pawn in the opening!");
+        state=get("rnbqkbnr/ppp1pppp/8/8/2pP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3");
+        #1
+        if(value!=-100)$display("should be -100 because one pawn is taken!");
+
+
+
+        $display("TEST:basic pawn opening!");
+        state=get("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1");
+        #1
+        if(value!=0)$display("basic opening should be even!");
 
 
         $finish;

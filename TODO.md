@@ -1,5 +1,6 @@
-
 # king moves plan: 
+
+
 
 ## 2: implement the castling allowed. 
 
@@ -12,6 +13,12 @@ I am still stuck by this thing not working for reasons I don't know.
 
     I dont know why I even have the [7:0] threat on castling_test. 
     SHouldnt it only be 6? 
+    For some reason castle allowed is always false...
+## I have a hypothesis as to why everything is wrong. 
+The fen gets it going from black to white and the board gets it the other way, I think. 
+The reason is that the fen start at index 56 and goes from there 63 before it goes down to 48.
+I dont really know how to resulve this just yet but it should be doable. 
+
 
 # I need to implement threatened_by_king lol
 
@@ -21,6 +28,8 @@ The fen string right now doesnt deal with where en passants are allowed.
 
 ## Also build it to go the other way, so that I can write back to fen. 
 This is so that I can compare with other tools. Then I can have way better tests for things. 
+
+# I am fairly sure that the issue I am finding has to do with indexing not working. A bunch of pieces are threatened and they shouldn't be. 
 
 
 # at some point I should make a full thing that checks a lot of stuff and implement a way bigger testbench. 
@@ -35,6 +44,7 @@ This will be super integral to the whole thing, so at some point I will retunr t
 
 # If there are fewer than nine valid movements, then there can't be 3-fol repetition. 
 # I should have an invalidating move-bit. 
+
 
 # more tests for materialcount. 
 I have written some, but I could have written a lot more. As of now, idk yet. 
@@ -63,7 +73,7 @@ The three move repeat does several things:
 As such I kind of only have to remember a few movements most of the time. 
 At most 16 pieces can do movements. 
  
- # how to generate a random legal move: 
+# how to generate a random legal move: 
 There are 2 versions of this. 
 The plan for now is to iterate over all the tiles. 
 If the tile doesn't have a piece of the correct color, skip. 
