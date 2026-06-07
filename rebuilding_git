@@ -1,0 +1,8 @@
+
+rm -r .git
+git init
+git add .
+git commit -m "Recreate repository"
+git branch -M main
+git remote add origin git@github.com:LeoMoeNTNU/fpgachessprojectleomoe.git
+git push -u --force origin master:main
